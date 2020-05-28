@@ -15,6 +15,10 @@
 		DF2FD1FC2480120200304565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2FD1FA2480120200304565 /* LaunchScreen.storyboard */; };
 		DF2FD2072480120200304565 /* CityFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2062480120200304565 /* CityFinderTests.swift */; };
 		DF2FD2122480120200304565 /* CityFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2112480120200304565 /* CityFinderUITests.swift */; };
+		DF2FD221248013C500304565 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = DF2FD220248013C500304565 /* cities.json */; };
+		DF2FD2242480145500304565 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2232480145500304565 /* City.swift */; };
+		DF2FD226248018B500304565 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD225248018B500304565 /* Coordinate.swift */; };
+		DF2FD22824801AED00304565 /* CityModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD22724801AED00304565 /* CityModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		DF2FD20D2480120200304565 /* CityFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2FD2112480120200304565 /* CityFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityFinderUITests.swift; sourceTree = "<group>"; };
 		DF2FD2132480120200304565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF2FD220248013C500304565 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		DF2FD2232480145500304565 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		DF2FD225248018B500304565 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		DF2FD22724801AED00304565 /* CityModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,8 @@
 				DF2FD1F82480120200304565 /* Assets.xcassets */,
 				DF2FD1FA2480120200304565 /* LaunchScreen.storyboard */,
 				DF2FD1FD2480120200304565 /* Info.plist */,
+				DF2FD222248013F600304565 /* Models */,
+				DF2FD21F2480138600304565 /* Resources */,
 			);
 			path = CityFinder;
 			sourceTree = "<group>";
@@ -115,6 +125,7 @@
 			children = (
 				DF2FD2062480120200304565 /* CityFinderTests.swift */,
 				DF2FD2082480120200304565 /* Info.plist */,
+				DF2FD22724801AED00304565 /* CityModelTests.swift */,
 			);
 			path = CityFinderTests;
 			sourceTree = "<group>";
@@ -126,6 +137,23 @@
 				DF2FD2132480120200304565 /* Info.plist */,
 			);
 			path = CityFinderUITests;
+			sourceTree = "<group>";
+		};
+		DF2FD21F2480138600304565 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DF2FD220248013C500304565 /* cities.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF2FD222248013F600304565 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF2FD2232480145500304565 /* City.swift */,
+				DF2FD225248018B500304565 /* Coordinate.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2FD221248013C500304565 /* cities.json in Resources */,
 				DF2FD1FC2480120200304565 /* LaunchScreen.storyboard in Resources */,
 				DF2FD1F92480120200304565 /* Assets.xcassets in Resources */,
 				DF2FD1F72480120100304565 /* Main.storyboard in Resources */,
@@ -261,7 +290,9 @@
 			files = (
 				DF2FD1F42480120100304565 /* ViewController.swift in Sources */,
 				DF2FD1F02480120100304565 /* AppDelegate.swift in Sources */,
+				DF2FD2242480145500304565 /* City.swift in Sources */,
 				DF2FD1F22480120100304565 /* SceneDelegate.swift in Sources */,
+				DF2FD226248018B500304565 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2FD22824801AED00304565 /* CityModelTests.swift in Sources */,
 				DF2FD2072480120200304565 /* CityFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
