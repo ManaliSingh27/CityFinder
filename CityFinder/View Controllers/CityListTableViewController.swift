@@ -11,14 +11,35 @@ import UIKit
 class CityListTableViewController: UITableViewController {
 
     private var cityListViewModel : CityListViewModel!
+    let searchController = UISearchController(searchResultsController: nil)
+
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+           return searchController.isActive && !isSearchBarEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.cityListViewModel = CityListViewModel(delegate: self, filteredCityDelegate: self)
+               self.cityListViewModel.getCitiesList()
+           
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
-        self.cityListViewModel = CityListViewModel(delegate: self)
-        self.cityListViewModel.parseCitiesJson()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.hidesSearchBarWhenScrolling = false
+
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+       
         
         
     }
@@ -30,13 +51,13 @@ class CityListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cityListViewModel.numberOfCities()
+        return isFiltering ? self.cityListViewModel.numberOfFilteredCities() :self.cityListViewModel.numberOfCities()
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : CityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityTableViewCell
-        let cityViewModel : CityViewModel = self.cityListViewModel.cityAtIndex(index: indexPath.row)
+        let cityViewModel : CityViewModel = isFiltering ? self.cityListViewModel.filteredCityAtIndex(index: indexPath.row) :self.cityListViewModel.cityAtIndex(index: indexPath.row)
         cell.configureCell(viewModel: cityViewModel)
         return cell
     }
@@ -50,6 +71,8 @@ class CityListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+   
 
 }
 
@@ -64,3 +87,17 @@ extension CityListTableViewController : CityListViewModelDelegate
     }
 }
 
+extension CityListTableViewController : FilteredCityViewModelDelegate
+{
+    func citiesFilteredSuccess() {
+        self.tableView.reloadData()
+    }
+}
+
+extension CityListTableViewController : UISearchResultsUpdating
+{
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        cityListViewModel.filterCities(searchedText:searchBar.text!)
+    }
+}
