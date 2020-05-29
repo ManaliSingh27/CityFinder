@@ -24,8 +24,7 @@ class CityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(viewModel : CityViewModel)
-    {
+    func configureCell(viewModel: CityViewModel) {
         self.titleLabel.text = viewModel.cityTitle
         self.subTitleLabel.text = viewModel.citySubTitle
     }

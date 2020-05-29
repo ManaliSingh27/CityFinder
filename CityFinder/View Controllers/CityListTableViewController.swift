@@ -10,7 +10,7 @@ import UIKit
 
 class CityListTableViewController: UITableViewController {
 
-    private var cityListViewModel : CityListViewModel!
+    private var cityListViewModel: CityListViewModel!
     let searchController = UISearchController(searchResultsController: nil)
 
     var isSearchBarEmpty: Bool {
@@ -25,8 +25,7 @@ class CityListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.cityListViewModel = CityListViewModel(delegate: self, filteredCityDelegate: self)
-               self.cityListViewModel.getCitiesList()
-           
+        self.cityListViewModel.getCitiesList()
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
@@ -38,10 +37,6 @@ class CityListTableViewController: UITableViewController {
 
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-       
-        
-        
     }
 
     // MARK: - Table view data source
@@ -54,10 +49,9 @@ class CityListTableViewController: UITableViewController {
         return isFiltering ? self.cityListViewModel.numberOfFilteredCities() :self.cityListViewModel.numberOfCities()
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : CityTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityTableViewCell
-        let cityViewModel : CityViewModel = isFiltering ? self.cityListViewModel.filteredCityAtIndex(index: indexPath.row) :self.cityListViewModel.cityAtIndex(index: indexPath.row)
+        let cell: CityTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityTableViewCell)!
+        let cityViewModel: CityViewModel = isFiltering ? self.cityListViewModel.filteredCityAtIndex(index: indexPath.row) :self.cityListViewModel.cityAtIndex(index: indexPath.row)
         cell.configureCell(viewModel: cityViewModel)
         return cell
     }
@@ -71,13 +65,10 @@ class CityListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-   
-
 }
 
-extension CityListTableViewController : CityListViewModelDelegate
-{
+extension CityListTableViewController: CityListViewModelDelegate {
+    
     func parseCitiesSuccess() {
         self.tableView.reloadData()
     }
@@ -87,17 +78,15 @@ extension CityListTableViewController : CityListViewModelDelegate
     }
 }
 
-extension CityListTableViewController : FilteredCityViewModelDelegate
-{
+extension CityListTableViewController: FilteredCityViewModelDelegate {
     func citiesFilteredSuccess() {
         self.tableView.reloadData()
     }
 }
 
-extension CityListTableViewController : UISearchResultsUpdating
-{
+extension CityListTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        cityListViewModel.filterCities(searchedText:searchBar.text!)
+        cityListViewModel.filterCities(searchedText: searchBar.text!)
     }
 }

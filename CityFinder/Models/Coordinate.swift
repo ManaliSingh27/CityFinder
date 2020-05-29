@@ -8,10 +8,9 @@
 
 import Foundation
 
-struct Coordinate
-{
-    var latitude : Double
-    var longitude : Double
+struct Coordinate {
+    var latitude: Double
+    var longitude: Double
     
     enum CodingKeys: String, CodingKey {
         case latitude = "lat"
@@ -27,7 +26,6 @@ extension Coordinate: Decodable {
         longitude = try values.decode(Double.self, forKey: .longitude)
     }
 }
-
 
 extension Coordinate: Encodable {
     func encode(to encoder: Encoder) throws {

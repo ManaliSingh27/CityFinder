@@ -8,51 +8,43 @@
 
 import Foundation
 
-enum ParserResult<T>
-{
-    case Success(T)
-    case Error(String)
+enum ParserResult<T> {
+    case success(T)
+    case error(String)
 }
 
 protocol ParseData {
-      func parseJson(resourceFile:String, completion : @escaping(_ result : ParserResult<Array<Any>>) -> Void)
+      func parseJson(resourceFile: String, completion: @escaping(_ result: ParserResult<[Any]>) -> Void)
 }
 
-class ParserViewModel
-{
-    var dataParserObj : ParseData
+class ParserViewModel {
+    var dataParserObj: ParseData
     
-    init(dataParser : ParseData) {
+    init(dataParser: ParseData) {
         self.dataParserObj = dataParser
     }
     
-    func parseJson(resourceFile:String, completion : @escaping(_ result : ParserResult<Array<Any>>) -> Void)
-    {
+    func parseJson(resourceFile: String, completion: @escaping(_ result: ParserResult<[Any]>) -> Void) {
         dataParserObj.parseJson(resourceFile: resourceFile, completion: {(result) in
             completion(result)
         })
     }
 }
 
-
 class CityParserViewModel: ParseData {
     
-    func parseJson(resourceFile:String, completion : @escaping(_ result : ParserResult<Array<Any>>) -> Void)
-    {
+    func parseJson(resourceFile: String, completion: @escaping(_ result: ParserResult<[Any]>) -> Void) {
         guard
             let path = Bundle.main.path(forResource: resourceFile, ofType: "json")
             else {
                 return
         }
-        do{
+        do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
             let response = try JSONDecoder().decode([City].self, from: data)
-            completion(.Success(response))
-           
-        }
-        catch
-        {
-            completion(.Error("Parsing Failed"))
+            completion(.success(response))
+        } catch {
+            completion(.error("Parsing Failed"))
         }
       
     }

@@ -19,8 +19,7 @@ class CityModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testCityJsonResponse() throws
-    {
+    func testCityJsonResponse() throws {
         guard
             let path = Bundle.main.path(forResource: "cities", ofType: "json")
             else {
@@ -45,7 +44,4 @@ class CityModelTests: XCTestCase {
         XCTAssert((firstCity?.location.longitude as Any) is Double)
 
     }
-    
-    
-    
 }

@@ -12,9 +12,9 @@ import XCTest
 class FilterViewModelTests: XCTestCase {
     
     private var filterCitiesObj = FilterCityViewModel()
-    private var filterModelObj : FilterDataViewModel!
+    private var filterModelObj: FilterDataViewModel!
     
-    private var cities : Array<City>!
+    private var cities: [City]!
     override func setUp() {
         cities = createCityModelData()
         filterModelObj = FilterDataViewModel(filter: filterCitiesObj)
@@ -24,8 +24,7 @@ class FilterViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    private func createCityModelData() -> Array<City>
-    {
+    private func createCityModelData() -> [City] {
         let cities = [
             City(
                 cityName: "Alabama", countryCode: "US", cityId: 1, location: Coordinate(latitude: 10.90, longitude: 18.90)
@@ -46,49 +45,40 @@ class FilterViewModelTests: XCTestCase {
         return cities
     }
     
-    private func createRandomNumericString(length: Int) -> String
-    {
+    private func createRandomNumericString(length: Int) -> String {
         let letters = "0123456789"
-        return String((0..<length).map{ _ in letters.randomElement()! })
+        return String((0..<length).map { _ in letters.randomElement()! })
     }
     
-    private func createRandomSpecialCharString(length : Int) -> String
-    {
+    private func createRandomSpecialCharString(length: Int) -> String {
         let passwordRegex = "^[0-9 !\"#$%&()*+,-./:;<=>?@\\[\\\\\\]_{|}~].{8,}$"
-        return String((0..<length).map{ _ in passwordRegex.randomElement()! })
+        return String((0..<length).map { _ in passwordRegex.randomElement()! })
 
     }
 
-    func testFilteredList()
-    {
-        let filteredCities : Array<City> = filterModelObj.filterData(searchedText: "A", data: cities)
-        XCTAssertTrue(filteredCities.contains{$0.cityName == "Alabama"})
-        XCTAssertTrue(filteredCities.contains{$0.cityName == "Albuquerque"})
-        XCTAssertTrue(filteredCities.contains{$0.cityName == "Anaheim"})
-        XCTAssertTrue(filteredCities.contains{$0.cityName == "Arizona"})
-        XCTAssertFalse(filteredCities.contains{$0.cityName == "Sydney"})
-        
+    func testFilteredList() {
+        let filteredCities: [City] = filterModelObj.filterData(searchedText: "A", data: cities)
+        XCTAssertTrue(filteredCities.contains {$0.cityName == "Alabama"})
+        XCTAssertTrue(filteredCities.contains {$0.cityName == "Albuquerque"})
+        XCTAssertTrue(filteredCities.contains {$0.cityName == "Anaheim"})
+        XCTAssertTrue(filteredCities.contains {$0.cityName == "Arizona"})
+        XCTAssertFalse(filteredCities.contains {$0.cityName == "Sydney"})
     }
     
-    func testFilteredListWithInvalidInput()
-    {
-        let filteredCities : Array<City> = filterModelObj.filterData(searchedText: createRandomSpecialCharString(length: 4), data: cities)
-        XCTAssertTrue(filteredCities.count == 0)
-
+    func testFilteredListWithInvalidInput() {
+        let filteredCities: [City] = filterModelObj.filterData(searchedText: createRandomSpecialCharString(length: 4), data: cities)
+        XCTAssertTrue(filteredCities.isEmpty)
     }
     
-    
-    func testFilteredListWithRandomCityName()
-    {
-        let cityNames = cities.map{$0.cityName}
+    func testFilteredListWithRandomCityName() {
+        let cityNames = cities.map {$0.cityName}
         let searchedCity  = cityNames.randomElement()
-        let filteredCities : Array<City> = filterModelObj.filterData(searchedText: searchedCity!, data: cities)
-        XCTAssertTrue(filteredCities.count > 0)
+        let filteredCities: [City] = filterModelObj.filterData(searchedText: searchedCity!, data: cities)
+        XCTAssertFalse(filteredCities.isEmpty)
     }
     
-    func testFilteredListWithEmptyString()
-    {
-        let filteredCities : Array<City> = filterModelObj.filterData(searchedText: "", data: cities)
+    func testFilteredListWithEmptyString() {
+        let filteredCities: [City] = filterModelObj.filterData(searchedText: "", data: cities)
         XCTAssertTrue(filteredCities.count == cities.count)
 
     }

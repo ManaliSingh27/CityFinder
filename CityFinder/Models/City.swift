@@ -8,13 +8,11 @@
 
 import Foundation
 
-
-struct City
-{
-    var cityName : String
-    var countryCode : String
-    var cityId : Int
-    var location : Coordinate
+struct City {
+    var cityName: String
+    var countryCode: String
+    var cityId: Int
+    var location: Coordinate
     
     enum CodingKeys: String, CodingKey {
         case cityName = "name"
@@ -34,8 +32,7 @@ extension City: Decodable {
         location = try values.decode(Coordinate.self, forKey: .location)
     }
 }
-
-
+ 
 extension City: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -43,9 +40,5 @@ extension City: Encodable {
         try container.encode(countryCode, forKey: .countryCode)
         try container.encode(cityId, forKey: .cityId)
         try container.encode(location, forKey: .location)
-
-    }
+     }
 }
-
-
-
