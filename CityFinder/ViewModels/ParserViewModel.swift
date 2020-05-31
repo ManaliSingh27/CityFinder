@@ -41,8 +41,9 @@ final class CityParserViewModel: ParseData {
         }
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            let response = try JSONDecoder().decode([City].self, from: data)
-            completion(.success(response))
+            let response: [City] = try JSONDecoder().decode([City].self, from: data)
+            let sortedResponse = response.sorted { $0.cityName < $1.cityName }
+            completion(.success(sortedResponse))
         } catch {
             completion(.error("Parsing Failed"))
         }

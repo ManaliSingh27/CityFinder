@@ -53,7 +53,7 @@ class CityListViewModel: NSObject {
             case .success(let cityResponse):
                 // Sorting the List alphabetically based on City Name
                 let cityArray = cityResponse as? [City]
-                self.cities =  (cityArray?.sorted {$0.cityName < $1.cityName})! 
+                self.cities = cityArray!
             case .error(let error):
                 print(error)
                 self.delegate?.parseCitiesFailureWithMessage(message: error)

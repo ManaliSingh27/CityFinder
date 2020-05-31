@@ -26,9 +26,9 @@ class FilterDataViewModel {
 
 final class FilterCityViewModel: FilterData {
     func filterData(searchedText: String, data: [City]) -> [City] {
-        let filteredCities = data.filter { (city: City) -> Bool in
-            return city.cityCountryCode.lowercased().starts(with: searchedText.lowercased())
-        }
+        
+        let filteredCities = data.filter { $0.cityCountryCode.lowercased().hasPrefix(searchedText.lowercased())}
         return filteredCities
+        
     }
 }
