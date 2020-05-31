@@ -74,7 +74,7 @@
         <!--City Detailed View Controller-->
         <scene sceneID="5iZ-pP-fvi">
             <objects>
-                <viewController id="WbV-f4-Z2m" customClass="CityDetailedViewController" customModule="CityFinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityDetailedTableViewController" id="WbV-f4-Z2m" customClass="CityDetailedViewController" customModule="CityFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6g-Y3-35a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -27,19 +27,19 @@ class FilterViewModelTests: XCTestCase {
     private func createCityModelData() -> [City] {
         let cities = [
             City(
-                cityName: "Alabama", countryCode: "US", cityId: 1, location: Coordinate(latitude: 10.90, longitude: 18.90)
+                cityName: "Alabama", countryCode: "US", cityId: 1, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Alabama, US"
             ),
             City(
-                cityName: "Albuquerque", countryCode: "US", cityId: 2, location: Coordinate(latitude: 10.90, longitude: 18.90)
+                cityName: "Albuquerque", countryCode: "US", cityId: 2, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Albuquerque, US"
             ),
             City(
-                cityName: "Anaheim", countryCode: "US", cityId: 3, location: Coordinate(latitude: 10.90, longitude: 18.90)
+                cityName: "Anaheim", countryCode: "US", cityId: 3, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Anaheim, US"
             ),
             City(
-                cityName: "Arizona", countryCode: "US", cityId: 4, location: Coordinate(latitude: 10.90, longitude: 18.90)
+                cityName: "Arizona", countryCode: "US", cityId: 4, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Arizona, US"
             ),
             City(
-                cityName: "Sydney", countryCode: "AU", cityId: 5, location: Coordinate(latitude: 10.90, longitude: 18.90)
+                cityName: "Sydney", countryCode: "AU", cityId: 5, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Sydney, AU"
             )
         ]
         return cities

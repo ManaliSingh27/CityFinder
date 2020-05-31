@@ -28,6 +28,7 @@
 		DF94790824819E31005EA854 /* FilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790724819E31005EA854 /* FilterViewModelTests.swift */; };
 		DF94790D2481B8D2005EA854 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DF94790C2481B8D2005EA854 /* .swiftlint.yml */; };
 		DF9479112481C83B005EA854 /* UIViewController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9479102481C83B005EA854 /* UIViewController+Util.swift */; };
+		DFD8D1D124840E5800B82B4A /* CityDetailedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */; };
 		DFFEC9B72483CFF200D5FFBC /* CityDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */; };
 		DFFEC9B92483DBC700D5FFBC /* MKMapView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEC9B82483DBC700D5FFBC /* MKMapView+Util.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		DF94790724819E31005EA854 /* FilterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModelTests.swift; sourceTree = "<group>"; };
 		DF94790C2481B8D2005EA854 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DF9479102481C83B005EA854 /* UIViewController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Util.swift"; sourceTree = "<group>"; };
+		DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewTests.swift; sourceTree = "<group>"; };
 		DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewController.swift; sourceTree = "<group>"; };
 		DFFEC9B82483DBC700D5FFBC /* MKMapView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 				DF2FD22724801AED00304565 /* CityModelTests.swift */,
 				DF2FD23624806D8100304565 /* CityListTableViewTests.swift */,
 				DF94790724819E31005EA854 /* FilterViewModelTests.swift */,
+				DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */,
 			);
 			path = CityFinderTests;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFD8D1D124840E5800B82B4A /* CityDetailedViewTests.swift in Sources */,
 				DF2FD23724806D8100304565 /* CityListTableViewTests.swift in Sources */,
 				DF2FD22824801AED00304565 /* CityModelTests.swift in Sources */,
 				DF94790824819E31005EA854 /* FilterViewModelTests.swift in Sources */,
