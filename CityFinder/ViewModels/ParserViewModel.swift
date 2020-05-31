@@ -31,7 +31,7 @@ class ParserViewModel {
     }
 }
 
-class CityParserViewModel: ParseData {
+final class CityParserViewModel: ParseData {
     
     func parseJson(resourceFile: String, completion: @escaping(_ result: ParserResult<[Any]>) -> Void) {
         guard

@@ -52,7 +52,6 @@ class CityListViewModel: NSObject {
          parserManager.parseJson(resourceFile: "cities", completion: {(result) in
             switch result {
             case .success(let cityResponse):
-               // self.cities = cityResponse as! Array<City>
                 // Sorting the List alphabetically based on City Name
                 let cityArray = cityResponse as? [City]
                 self.cities =  (cityArray?.sorted {$0.cityName < $1.cityName})! 

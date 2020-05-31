@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,10 +63,43 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="5ET-v1-Lle"/>
+                    <connections>
+                        <segue destination="WbV-f4-Z2m" kind="show" identifier="showDetailedCitySegue" id="CjH-eR-Mqr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuP-vo-Xue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1802.8985507246377" y="129.91071428571428"/>
+        </scene>
+        <!--City Detailed View Controller-->
+        <scene sceneID="5iZ-pP-fvi">
+            <objects>
+                <viewController id="WbV-f4-Z2m" customClass="CityDetailedViewController" customModule="CityFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c6g-Y3-35a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5VK-Ph-OTq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5VK-Ph-OTq" firstAttribute="bottom" secondItem="rsf-It-jCX" secondAttribute="bottom" constant="34" id="5hl-o4-fGY"/>
+                            <constraint firstItem="rsf-It-jCX" firstAttribute="top" secondItem="5VK-Ph-OTq" secondAttribute="top" constant="44" id="ebh-8M-slH"/>
+                            <constraint firstItem="5VK-Ph-OTq" firstAttribute="width" secondItem="c6g-Y3-35a" secondAttribute="width" id="edS-dF-nRY"/>
+                            <constraint firstItem="5VK-Ph-OTq" firstAttribute="leading" secondItem="rsf-It-jCX" secondAttribute="leading" id="k4g-iN-EtY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rsf-It-jCX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RQS-Bw-6XN"/>
+                    <connections>
+                        <outlet property="cityMapView" destination="5VK-Ph-OTq" id="WOq-Wk-YyC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbr-xk-jy8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2704" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xFJ-QM-Mbf">

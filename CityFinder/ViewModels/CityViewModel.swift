@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CityViewModel: NSObject {
     
@@ -31,4 +32,13 @@ class CityViewModel: NSObject {
         return "\(self.city.location.latitude), \(self.city.location.longitude)"
     }
     
+    var cityLocation: CLLocation {
+        return CLLocation(latitude: self.city.location.latitude, longitude: city.location.longitude)
+    }
+    
+    var cityLocationCoordinate: CLLocationCoordinate2D {
+       return CLLocationCoordinate2D(latitude:
+           self.city.location.latitude, longitude: self.city.location.longitude)
+    }
+   
 }
