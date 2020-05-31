@@ -18,3 +18,23 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+extension UIViewController {
+    // MARK: - Activity Indicator
+    /// Shows Activity indicator
+    /// - parameter activityIndicator: activity indicator instance
+    func showActivityIndicatory(activityIndicator: UIActivityIndicatorView) {
+        self.view.addSubview(activityIndicator)
+        activityIndicator.frame = view.bounds
+        activityIndicator.bringSubviewToFront(self.view)
+        activityIndicator.startAnimating()
+    }
+    
+    /// Shows Activity indicator
+    /// - parameter activityIndicator: activity indicator instance
+    func removeActivityIndicator(activityIndicator: UIActivityIndicatorView) {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
+    
+}

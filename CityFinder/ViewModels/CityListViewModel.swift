@@ -48,7 +48,6 @@ class CityListViewModel: NSObject {
     
    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
-
          parserManager.parseJson(resourceFile: "cities", completion: {(result) in
             switch result {
             case .success(let cityResponse):

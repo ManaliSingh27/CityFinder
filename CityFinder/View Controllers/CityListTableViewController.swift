@@ -14,7 +14,8 @@ class CityListTableViewController: UITableViewController {
     private var selectedCityViewModel: CityViewModel!
     
     let searchController = UISearchController(searchResultsController: nil)
-    
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -25,11 +26,19 @@ class CityListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.cityListViewModel = CityListViewModel(delegate: self, filteredCityDelegate: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        
         self.setUpSearchBar()
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        self.showActivityIndicatory(activityIndicator: activityIndicator)
+
+        dispatchQueue.async {
         self.cityListViewModel.getCitiesList()
+        }
     }
     
     private func setUpSearchBar() {
@@ -78,7 +87,10 @@ extension CityListTableViewController {
 extension CityListTableViewController: CityListViewModelDelegate {
     
     func parseCitiesSuccess() {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.removeActivityIndicator(activityIndicator: self.activityIndicator)
+        }
     }
     
     func parseCitiesFailureWithMessage(message: String) {
