@@ -13,6 +13,7 @@ struct City {
     var countryCode: String
     var cityId: Int
     var location: Coordinate
+    var cityCountryCode: String
     
     enum CodingKeys: String, CodingKey {
         case cityName = "name"
@@ -30,6 +31,7 @@ extension City: Decodable {
         countryCode = try values.decode(String.self, forKey: .countryCode)
         cityId = try values.decode(Int.self, forKey: .cityId)
         location = try values.decode(Coordinate.self, forKey: .location)
+        cityCountryCode = "\(cityName), \(countryCode)"
     }
 }
  
