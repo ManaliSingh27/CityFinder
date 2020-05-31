@@ -14,8 +14,8 @@ class CityListTableViewController: UITableViewController {
     private var selectedCityViewModel: CityViewModel!
     
     let searchController = UISearchController(searchResultsController: nil)
-    let activityIndicator = UIActivityIndicatorView(style: .medium)
-
+    let activityIndicator = UIActivityIndicatorView()
+    
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -31,23 +31,38 @@ class CityListTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
-        self.setUpSearchBar()
+        self.setUpSearchController()
+        self.setActivityIndicator()
+        self.showCitiesList()
+    }
+    
+    /// Gets the Cities list from CityListViewModel
+    private func showCitiesList() {
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
-        self.showActivityIndicatory(activityIndicator: activityIndicator)
-
-        dispatchQueue.async {
-        self.cityListViewModel.getCitiesList()
+        dispatchQueue.async {[weak self] in
+            guard let self = self else { return }
+            self.cityListViewModel.getCitiesList()
         }
     }
     
-    private func setUpSearchBar() {
+    /// Configures the Activity Indicator
+    private func setActivityIndicator() {
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        } else {
+            activityIndicator.style = .whiteLarge
+        }
+        self.showActivityIndicatory(activityIndicator: activityIndicator)
+    }
+    
+    /// Configures Search Controller
+    private func setUpSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Find a City"
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
     }
     
@@ -88,14 +103,17 @@ extension CityListTableViewController {
 extension CityListTableViewController: CityListViewModelDelegate {
     
     func parseCitiesSuccess() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.tableView.reloadData()
             self.removeActivityIndicator(activityIndicator: self.activityIndicator)
+            let searchBar = self.searchController.searchBar
+            self.cityListViewModel.filterCities(searchedText: searchBar.text!)
         }
     }
     
     func parseCitiesFailureWithMessage(message: String) {
-        self.showError("Error", message: message)
+        self.showAlert(title: "Error", message: message)
     }
 }
 

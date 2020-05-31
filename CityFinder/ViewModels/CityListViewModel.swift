@@ -46,12 +46,12 @@ class CityListViewModel: NSObject {
 
     }
     
+/// Parse the json file and saves the city list in cities array
    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
          parserManager.parseJson(resourceFile: "cities", completion: {(result) in
             switch result {
             case .success(let cityResponse):
-                // Sorting the List alphabetically based on City Name
                 let cityArray = cityResponse as? [City]
                 self.cities = cityArray!
             case .error(let error):
@@ -60,16 +60,24 @@ class CityListViewModel: NSObject {
             }
         })
     }
-        
+    
+    /// Returns the number of cities based on the search text entered.
+    /// - parameter isFiltering: Bool value indicating if a text is entered in search bar
+    /// - returns:  Count of Cities
     func numberOfCities(isFiltering: Bool) -> Int {
         return isFiltering ? self.filteredCities.count : self.cities.count
     }
     
+    /// Returns the City View Model based on the search text and the row index
+    /// - parameter isFiltering: Bool value indicating if a text is entered in search bar
+    /// - parameter index: Index of the row to get the City View Model
+    /// - returns:  City View Model
     func cityAtIndex(isFiltering: Bool, index: Int) -> CityViewModel {
         return isFiltering ? CityViewModel(city: self.filteredCities[index]) : CityViewModel(city: self.cities[index])
     }
     
-    // Search Bar
+    /// Updates the filteredCities array based on the searched text
+    /// - parameter searchedText: Text entered in search bar
     func filterCities(searchedText: String) {
         self.filteredCities = self.filterManager.filterData(searchedText: searchedText, data: self.cities) 
     }

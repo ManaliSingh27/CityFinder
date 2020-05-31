@@ -10,6 +10,10 @@ import Foundation
 import MapKit
 
 extension MKMapView {
+    // MARK: - Map View
+    /// Sets the Center Location of Map
+    /// - parameter location: CLLocation of the cordinates
+    /// - parameter regionRadius: Distance in meters
     func setCenterLocation(location: CLLocation, regionRadius: CLLocationDistance) {
         let coordinateRegion = MKCoordinateRegion(
             center: location.coordinate,
@@ -18,6 +22,9 @@ extension MKMapView {
         setRegion(coordinateRegion, animated: true)
     }
     
+    /// Shows the Annotation with Title on Map
+    /// - parameter title: Title of annotation
+    /// - parameter coordinate: CLLocationCoordinate2D of coordinates
     func setAnnotation(title: String, coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = title

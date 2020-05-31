@@ -32,7 +32,9 @@ class ParserViewModel {
 }
 
 final class CityParserViewModel: ParseData {
-    
+    /// Parse the json File and returns success or failure
+    /// - parameter resourceFile: json file name
+    /// - parameter completion : completion handler
     func parseJson(resourceFile: String, completion: @escaping(_ result: ParserResult<[Any]>) -> Void) {
         guard
             let path = Bundle.main.path(forResource: resourceFile, ofType: "json")

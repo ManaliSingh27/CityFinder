@@ -9,7 +9,11 @@
 import UIKit
 
 extension UIViewController {
-    func showError(_ title: String?, message: String) {
+    // MARK: - Alert Controller
+    /// Shows Alert with message and title
+    /// - parameter title: Title of Alert
+    /// - parameter message: Alert Message
+    func showAlert(title: String?, message: String) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: .alert)

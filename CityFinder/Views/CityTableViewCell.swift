@@ -24,6 +24,8 @@ class CityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    /// Shows the City Name and Country Code as Title along with coordinates as Sub Title
+    /// - parameter viewModel: City View Model Object
     func configureCell(viewModel: CityViewModel) {
         self.titleLabel.text = viewModel.cityTitle
         self.subTitleLabel.text = viewModel.citySubTitle

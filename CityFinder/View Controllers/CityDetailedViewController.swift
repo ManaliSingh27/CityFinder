@@ -17,12 +17,6 @@ class CityDetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = selectedCityViewModel.cityName
-        let attrs = [
-            NSAttributedString.Key.foregroundColor: UIColor.red,
-            NSAttributedString.Key.font: UIFont(name: "Georgia-Bold", size: 24)!
-        ]
-
-        UINavigationBar.appearance().titleTextAttributes = attrs
         cityMapView.setCenterLocation(location: selectedCityViewModel.cityLocation, regionRadius: 1000)
         cityMapView.setAnnotation(title: selectedCityViewModel.cityName, coordinate: selectedCityViewModel.cityLocationCoordinate)
        

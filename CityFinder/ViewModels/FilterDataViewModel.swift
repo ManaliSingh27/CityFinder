@@ -25,6 +25,10 @@ class FilterDataViewModel {
 }
 
 final class FilterCityViewModel: FilterData {
+    /// Filters the Cities Array based on the text searched
+    /// - parameter searchedText: Text to be matched in the data
+    /// - parameter data: Array of cities
+    /// - returns:  Array of Filtered Cities
     func filterData(searchedText: String, data: [City]) -> [City] {
         
         let filteredCities = data.filter { $0.cityCountryCode.lowercased().hasPrefix(searchedText.lowercased())}
