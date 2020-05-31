@@ -47,6 +47,8 @@ class CityListTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
     }
     
     // MARK: - Navigation

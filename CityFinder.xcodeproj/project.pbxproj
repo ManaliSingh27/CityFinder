@@ -29,6 +29,7 @@
 		DF94790D2481B8D2005EA854 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DF94790C2481B8D2005EA854 /* .swiftlint.yml */; };
 		DF9479112481C83B005EA854 /* UIViewController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9479102481C83B005EA854 /* UIViewController+Util.swift */; };
 		DFD8D1D124840E5800B82B4A /* CityDetailedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */; };
+		DFD8D1D324844A2300B82B4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8D1D224844A2300B82B4A /* Constants.swift */; };
 		DFFEC9B72483CFF200D5FFBC /* CityDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */; };
 		DFFEC9B92483DBC700D5FFBC /* MKMapView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEC9B82483DBC700D5FFBC /* MKMapView+Util.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		DF94790C2481B8D2005EA854 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DF9479102481C83B005EA854 /* UIViewController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Util.swift"; sourceTree = "<group>"; };
 		DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewTests.swift; sourceTree = "<group>"; };
+		DFD8D1D224844A2300B82B4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewController.swift; sourceTree = "<group>"; };
 		DFFEC9B82483DBC700D5FFBC /* MKMapView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 				DF2FD22B24802BF500304565 /* View Controllers */,
 				DF2FD222248013F600304565 /* Models */,
 				DF2FD21F2480138600304565 /* Resources */,
+				DFD8D1D224844A2300B82B4A /* Constants.swift */,
 			);
 			path = CityFinder;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				DF94790224814135005EA854 /* ParserViewModel.swift in Sources */,
 				DF2FD1F22480120100304565 /* SceneDelegate.swift in Sources */,
 				DF2FD22D24802C1C00304565 /* CityListTableViewController.swift in Sources */,
+				DFD8D1D324844A2300B82B4A /* Constants.swift in Sources */,
 				DFFEC9B72483CFF200D5FFBC /* CityDetailedViewController.swift in Sources */,
 				DF2FD226248018B500304565 /* Coordinate.swift in Sources */,
 			);

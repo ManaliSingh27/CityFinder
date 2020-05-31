@@ -25,7 +25,9 @@ extension UIViewController {
     /// - parameter activityIndicator: activity indicator instance
     func showActivityIndicatory(activityIndicator: UIActivityIndicatorView) {
         self.view.addSubview(activityIndicator)
+        activityIndicator.center = self.view.center
         activityIndicator.frame = view.bounds
+        activityIndicator.color = Constants.blueColor
         activityIndicator.bringSubviewToFront(self.view)
         activityIndicator.startAnimating()
     }
@@ -36,7 +38,4 @@ extension UIViewController {
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
     }
-    
-    
-    
 }
