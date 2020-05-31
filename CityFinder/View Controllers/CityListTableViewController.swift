@@ -56,12 +56,12 @@ extension CityListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering ? self.cityListViewModel.numberOfFilteredCities() :self.cityListViewModel.numberOfCities()
+        return self.cityListViewModel.numberOfCities(isFiltering: isFiltering)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CityTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityTableViewCell)!
-        let cityViewModel: CityViewModel = isFiltering ? self.cityListViewModel.filteredCityAtIndex(index: indexPath.row) :self.cityListViewModel.cityAtIndex(index: indexPath.row)
+        let cityViewModel: CityViewModel = self.cityListViewModel.cityAtIndex(isFiltering: isFiltering, index: indexPath.row)
         cell.configureCell(viewModel: cityViewModel)
         return cell
     }
@@ -70,7 +70,7 @@ extension CityListTableViewController {
 extension CityListTableViewController {
     // MARK: - Table view delegates
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCityViewModel = isFiltering ? self.cityListViewModel.filteredCityAtIndex(index: indexPath.row) :self.cityListViewModel.cityAtIndex(index: indexPath.row)
+        selectedCityViewModel = self.cityListViewModel.cityAtIndex(isFiltering: isFiltering, index: indexPath.row)
         performSegue(withIdentifier: "showDetailedCitySegue", sender: nil)
     }
 }

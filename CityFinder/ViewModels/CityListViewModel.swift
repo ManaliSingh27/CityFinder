@@ -62,24 +62,16 @@ class CityListViewModel: NSObject {
         })
     }
         
-    func numberOfCities() -> Int {
-        return self.cities.count
+    func numberOfCities(isFiltering: Bool) -> Int {
+        return isFiltering ? self.filteredCities.count : self.cities.count
     }
     
-    func cityAtIndex(index: Int) -> CityViewModel {
-        return CityViewModel(city: self.cities[index])
+    func cityAtIndex(isFiltering: Bool, index: Int) -> CityViewModel {
+        return isFiltering ? CityViewModel(city: self.filteredCities[index]) : CityViewModel(city: self.cities[index])
     }
     
     // Search Bar
     func filterCities(searchedText: String) {
         self.filteredCities = self.filterManager.filterData(searchedText: searchedText, data: self.cities) 
-    }
-    
-    func numberOfFilteredCities() -> Int {
-        return self.filteredCities.count
-    }
-    
-    func filteredCityAtIndex(index: Int) -> CityViewModel {
-        return CityViewModel(city: self.filteredCities[index])
     }
 }
