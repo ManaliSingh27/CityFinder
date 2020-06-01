@@ -109,7 +109,9 @@ extension CityListTableViewController: CityListViewModelDelegate {
             self.tableView.reloadData()
             self.removeActivityIndicator(activityIndicator: self.activityIndicator)
             let searchBar = self.searchController.searchBar
+            if self.isFiltering {
             self.cityListViewModel.filterCities(searchedText: searchBar.text!)
+            }
         }
     }
     

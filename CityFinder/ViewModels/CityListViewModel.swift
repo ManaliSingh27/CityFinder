@@ -22,13 +22,15 @@ class CityListViewModel: NSObject {
     private var parserObj  = CityParserViewModel()
     private var filterCitiesObj = FilterCityViewModel()
     private var filterManager: FilterDataViewModel!
+    let trie = Trie()
+
     private var cities: [City] {
         didSet {
             self.delegate?.parseCitiesSuccess()
         }
     }
     
-    private var filteredCities: [City] {
+    private var filteredCities: [CityViewModel] {
         didSet {
             self.filteredCityDelegate?.citiesFilteredSuccess()
         }
@@ -39,7 +41,7 @@ class CityListViewModel: NSObject {
     
     init(delegate: CityListViewModelDelegate?, filteredCityDelegate: FilteredCityViewModelDelegate?) {
         self.cities = [City]()
-        self.filteredCities = [City]()
+        self.filteredCities = [CityViewModel]()
         self.delegate = delegate
         self.filteredCityDelegate = filteredCityDelegate
         self.filterManager = FilterDataViewModel(filter: filterCitiesObj)
@@ -50,15 +52,24 @@ class CityListViewModel: NSObject {
    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
          parserManager.parseJson(resourceFile: "cities", completion: {(result) in
+          //  guard let self = self else { return }
+
             switch result {
             case .success(let cityResponse):
                 let cityArray = cityResponse as? [City]
                 self.cities = cityArray!
+                self.saveCitiesDataInTrieFormat()
             case .error(let error):
                 print(error)
                 self.delegate?.parseCitiesFailureWithMessage(message: error)
             }
         })
+    }
+    
+    func saveCitiesDataInTrieFormat() {
+        for city in self.cities {
+            trie.append(word: city.cityCountryCode, viewModel: CityViewModel(city: city))
+        }
     }
     
     /// Returns the number of cities based on the search text entered.
@@ -73,12 +84,13 @@ class CityListViewModel: NSObject {
     /// - parameter index: Index of the row to get the City View Model
     /// - returns:  City View Model
     func cityAtIndex(isFiltering: Bool, index: Int) -> CityViewModel {
-        return isFiltering ? CityViewModel(city: self.filteredCities[index]) : CityViewModel(city: self.cities[index])
+        return isFiltering ? self.filteredCities[index] : CityViewModel(city: self.cities[index])
     }
     
     /// Updates the filteredCities array based on the searched text
     /// - parameter searchedText: Text entered in search bar
     func filterCities(searchedText: String) {
-        self.filteredCities = self.filterManager.filterData(searchedText: searchedText, data: self.cities) 
+        self.filteredCities =
+            self.filterManager.filterData(searchedText: searchedText, data: trie) ?? [CityViewModel]()
     }
 }

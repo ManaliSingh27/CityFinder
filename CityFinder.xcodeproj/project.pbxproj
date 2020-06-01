@@ -23,6 +23,7 @@
 		DF2FD2332480314600304565 /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2322480314600304565 /* CityListViewModel.swift */; };
 		DF2FD2352480639100304565 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2342480639100304565 /* CityViewModel.swift */; };
 		DF2FD23724806D8100304565 /* CityListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD23624806D8100304565 /* CityListTableViewTests.swift */; };
+		DF6212F924859D860090EFB3 /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6212F824859D860090EFB3 /* TrieNode.swift */; };
 		DF94790224814135005EA854 /* ParserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790124814135005EA854 /* ParserViewModel.swift */; };
 		DF947906248160BB005EA854 /* FilterDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF947905248160BB005EA854 /* FilterDataViewModel.swift */; };
 		DF94790824819E31005EA854 /* FilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790724819E31005EA854 /* FilterViewModelTests.swift */; };
@@ -74,6 +75,7 @@
 		DF2FD2322480314600304565 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		DF2FD2342480639100304565 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		DF2FD23624806D8100304565 /* CityListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewTests.swift; sourceTree = "<group>"; };
+		DF6212F824859D860090EFB3 /* TrieNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		DF94790124814135005EA854 /* ParserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserViewModel.swift; sourceTree = "<group>"; };
 		DF947905248160BB005EA854 /* FilterDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataViewModel.swift; sourceTree = "<group>"; };
 		DF94790724819E31005EA854 /* FilterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModelTests.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				DF94790F2481C810005EA854 /* Extensions */,
+				DF6212F824859D860090EFB3 /* TrieNode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				DF2FD2352480639100304565 /* CityViewModel.swift in Sources */,
 				DFFEC9B92483DBC700D5FFBC /* MKMapView+Util.swift in Sources */,
 				DF2FD2242480145500304565 /* City.swift in Sources */,
+				DF6212F924859D860090EFB3 /* TrieNode.swift in Sources */,
 				DF9479112481C83B005EA854 /* UIViewController+Util.swift in Sources */,
 				DF94790224814135005EA854 /* ParserViewModel.swift in Sources */,
 				DF2FD1F22480120100304565 /* SceneDelegate.swift in Sources */,
