@@ -134,19 +134,17 @@
 		DF2FD1EE2480120100304565 /* CityFinder */ = {
 			isa = PBXGroup;
 			children = (
-				DF94790E2481C7FD005EA854 /* Utilities */,
 				DF2FD1EF2480120100304565 /* AppDelegate.swift */,
 				DF2FD1F12480120100304565 /* SceneDelegate.swift */,
-				DF2FD1F52480120100304565 /* Main.storyboard */,
-				DF2FD1F82480120200304565 /* Assets.xcassets */,
-				DF2FD1FA2480120200304565 /* LaunchScreen.storyboard */,
-				DF2FD1FD2480120200304565 /* Info.plist */,
 				DF2FD2312480311B00304565 /* ViewModels */,
 				DF2FD22E24802C7100304565 /* Views */,
 				DF2FD22B24802BF500304565 /* View Controllers */,
 				DF2FD222248013F600304565 /* Models */,
+				DF94790E2481C7FD005EA854 /* Utilities */,
 				DF2FD21F2480138600304565 /* Resources */,
-				DFD8D1D224844A2300B82B4A /* Constants.swift */,
+				DF3858B9248559CE000DCA36 /* Constants */,
+				DF2FD1F82480120200304565 /* Assets.xcassets */,
+				DF2FD1FD2480120200304565 /* Info.plist */,
 			);
 			path = CityFinder;
 			sourceTree = "<group>";
@@ -202,6 +200,7 @@
 		DF2FD22E24802C7100304565 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF3858B8248559B5000DCA36 /* Storyboards */,
 				DF2FD22F24802C8B00304565 /* CityTableViewCell.swift */,
 			);
 			path = Views;
@@ -216,6 +215,23 @@
 				DF947905248160BB005EA854 /* FilterDataViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DF3858B8248559B5000DCA36 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DF2FD1F52480120100304565 /* Main.storyboard */,
+				DF2FD1FA2480120200304565 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DF3858B9248559CE000DCA36 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DFD8D1D224844A2300B82B4A /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		DF94790E2481C7FD005EA854 /* Utilities */ = {

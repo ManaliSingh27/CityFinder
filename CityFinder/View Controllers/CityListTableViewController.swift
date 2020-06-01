@@ -100,8 +100,9 @@ extension CityListTableViewController {
     }
 }
 
+// MARK: - Parser Delegate Methods
 extension CityListTableViewController: CityListViewModelDelegate {
-    
+    /// Reloads table view on success of Parsing
     func parseCitiesSuccess() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -112,12 +113,15 @@ extension CityListTableViewController: CityListViewModelDelegate {
         }
     }
     
+    /// Shows Alert if the parsing failed
     func parseCitiesFailureWithMessage(message: String) {
         self.showAlert(title: "Error", message: message)
     }
 }
 
+// MARK: - Filter Delegate methods
 extension CityListTableViewController: FilteredCityViewModelDelegate {
+    /// Reloads table view on filter success
     func citiesFilteredSuccess() {
         self.tableView.reloadData()
     }
