@@ -111,7 +111,6 @@ class FilterViewModelTests: XCTestCase {
         XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Arizona"})
     }
     
-    
     func testFilterWithInvalidInput() {
         testCreateCityNodeData()
         let filteredCityViewModels: [CityViewModel] = filterModelObj.filterData(searchedText: createRandomSpecialCharString(length: 4), data: cityNodeModelObj) ?? [CityViewModel]()

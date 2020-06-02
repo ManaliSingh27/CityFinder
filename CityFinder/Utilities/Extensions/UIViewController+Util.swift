@@ -31,7 +31,7 @@ extension UIViewController {
         self.view.addSubview(activityIndicator)
         activityIndicator.center = self.view.center
         activityIndicator.frame = view.bounds
-        activityIndicator.color = Constants.blueColor
+        activityIndicator.color = Constants.kBlueColor
         activityIndicator.bringSubviewToFront(self.view)
         activityIndicator.startAnimating()
     }

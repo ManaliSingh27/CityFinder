@@ -8,9 +8,9 @@
 
 class CityNodeViewModel {
     private var root = CityNode()
-    private var cityCount: Int = 0
     
-    //builds a tree hierarchy of dictionary content
+    /// Builds a tree hierarchy of cities based on view model passed as input
+    /// - parameter viewModel: City View Model having all City information
     func append(viewModel: CityViewModel) {
         let word = viewModel.cityTitle
         guard !word.isEmpty  else {
@@ -40,51 +40,43 @@ class CityNodeViewModel {
         if word.count == currentNode.level {
             currentNode.isFinal = true
             currentNode.cityModel = viewModel
-            cityCount += 1
             return
         }
     } //end function
     
+    /// Finds the cities matching the prefix enterd as keyword
+    /// - parameter keyword: Text to be searched in cities
+    /// - returns: Array of CityViewModel with city name having keyword as prefix 
     //find words based on the prefix
     func find(keyword: String) -> [CityViewModel]? {
         guard keyword.length > 0 else {
             return nil
         }
-        
         var currentNode: CityNode = root
         var searchedViewModelList = [CityViewModel]()
-        
         while keyword.length != currentNode.level {
-            
             var childToUse: CityNode!
             let searchKey = keyword.substring(toIndex: currentNode.level + 1)
-            
             //iterate through any child nodes
             for child in currentNode.children {
-                
                 if child.key?.lowercased() == searchKey {
                     childToUse = child
                     currentNode = childToUse
                     break
                 }
             }
-            
             if childToUse == nil {
                 return nil
             }
-            
         } //end while
-        
         //retrieve the keyword and any descendants
         if (currentNode.key?.lowercased() == keyword.lowercased()) && (currentNode.isFinal) {
             searchedViewModelList.append(currentNode.cityModel!)
         }
-        
         var tempChildArray = [CityNode]()
         for child in currentNode.children {
             tempChildArray.append(child)
         }
-        
         while !tempChildArray.isEmpty {
             //include only children that are words
             for child in currentNode.children {

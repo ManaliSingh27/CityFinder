@@ -51,7 +51,7 @@ class CityListViewModel: NSObject {
     /// Parse the json file and saves the city list in cities array
     func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
-        parserManager.parseJson(resourceFile: "cities", completion: {[weak self] (result) in
+        parserManager.parseJson(resourceFile: Constants.kCitiesJSON, completion: {[weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let cityResponse):
@@ -72,9 +72,7 @@ class CityListViewModel: NSObject {
             for city in self.cities {
                 self.cityNodeViewModelObj.append(viewModel: CityViewModel(city: city))
             }
-            
         }
-        
     }
     
     /// Returns the number of cities based on the search text entered.
