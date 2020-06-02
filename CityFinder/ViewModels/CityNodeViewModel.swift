@@ -8,9 +8,11 @@
 
 class CityNodeViewModel {
     private var root = CityNode()
+    private var cityCount: Int = 0
     
     //builds a tree hierarchy of dictionary content
-    func append(word: String, viewModel: CityViewModel) {
+    func append(viewModel: CityViewModel) {
+        let word = viewModel.cityTitle
         guard !word.isEmpty  else {
             return
         }
@@ -38,6 +40,7 @@ class CityNodeViewModel {
         if word.count == currentNode.level {
             currentNode.isFinal = true
             currentNode.cityModel = viewModel
+            cityCount += 1
             return
         }
     } //end function

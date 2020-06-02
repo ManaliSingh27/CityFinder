@@ -13,10 +13,11 @@ class FilterViewModelTests: XCTestCase {
     
     private var filterCitiesObj = FilterCityViewModel()
     private var filterModelObj: FilterDataViewModel!
+    private var cityNodeModelObj = CityNodeViewModel()
     
-    private var cities: [City]!
+    private var citiesViewModels: [CityViewModel]!
     override func setUp() {
-        cities = createCityModelData()
+        citiesViewModels = buildCityViewModels()
         filterModelObj = FilterDataViewModel(filter: filterCitiesObj)
     }
     
@@ -40,9 +41,29 @@ class FilterViewModelTests: XCTestCase {
             ),
             City(
                 cityName: "Sydney", countryCode: "AU", cityId: 5, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Sydney, AU"
-            )
+            ),
+            City(
+                cityName: "Amsterdam", countryCode: "NL", cityId: 6, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsterdam, NL"
+            ),
+            City(
+                cityName: "Amsterdam-Zuidoost", countryCode: "NL", cityId: 7, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsterdam-Zuidoost, NL"
+            ),
+            City(
+                cityName: "Amsham", countryCode: "DE", cityId: 8, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsham, DE"
+            ),
+            City(
+            cityName: "Mumbai", countryCode: "IN", cityId: 9, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Mumbai, IN"
+                  )
         ]
         return cities
+    }
+    
+    private func buildCityViewModels() -> [CityViewModel] {
+        var viewModels = [CityViewModel]()
+        self.createCityModelData().forEach {
+            viewModels.append(CityViewModel(city: $0))
+        }
+        return viewModels
     }
     
     private func createRandomNumericString(length: Int) -> String {
@@ -56,30 +77,58 @@ class FilterViewModelTests: XCTestCase {
 
     }
 
-    func testFilteredList() {
-        let filteredCities: [City] = filterModelObj.filterData(searchedText: "A", data: cities)
-        XCTAssertTrue(filteredCities.contains {$0.cityName == "Alabama"})
-        XCTAssertTrue(filteredCities.contains {$0.cityName == "Albuquerque"})
-        XCTAssertTrue(filteredCities.contains {$0.cityName == "Anaheim"})
-        XCTAssertTrue(filteredCities.contains {$0.cityName == "Arizona"})
-        XCTAssertFalse(filteredCities.contains {$0.cityName == "Sydney"})
+    func testCreateCityNodeData() {
+        citiesViewModels.forEach {
+            cityNodeModelObj.append(viewModel: $0)
+        }
     }
     
-    func testFilteredListWithInvalidInput() {
-        let filteredCities: [City] = filterModelObj.filterData(searchedText: createRandomSpecialCharString(length: 4), data: cities)
-        XCTAssertTrue(filteredCities.isEmpty)
+    func testFilterWithSingleSearchCharacter() {
+        testCreateCityNodeData()
+        let filteredCityViewModels: [CityViewModel] = filterModelObj.filterData(searchedText: "A", data: cityNodeModelObj)!
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Alabama"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Albuquerque"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Anaheim"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Arizona"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsterdam"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsterdam-Zuidoost"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsham"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Sydney"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Mumbai"})
     }
     
-    func testFilteredListWithRandomCityName() {
-        let cityNames = cities.map {$0.cityName}
+    func testFilterWithMultipleSearchCharacter() {
+        testCreateCityNodeData()
+        let filteredCityViewModels: [CityViewModel] = filterModelObj.filterData(searchedText: "ams", data: cityNodeModelObj)!
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsterdam"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsterdam-Zuidoost"})
+        XCTAssertTrue(filteredCityViewModels.contains {$0.cityName == "Amsham"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Sydney"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Mumbai"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Alabama"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Albuquerque"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Anaheim"})
+        XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Arizona"})
+    }
+    
+    
+    func testFilterWithInvalidInput() {
+        testCreateCityNodeData()
+        let filteredCityViewModels: [CityViewModel] = filterModelObj.filterData(searchedText: createRandomSpecialCharString(length: 4), data: cityNodeModelObj) ?? [CityViewModel]()
+        XCTAssertTrue(filteredCityViewModels.isEmpty)
+    }
+    
+    func testFilterWithRandomCityName() {
+        testCreateCityNodeData()
+        let cityNames = citiesViewModels.map {$0.cityName}
         let searchedCity  = cityNames.randomElement()
-        let filteredCities: [City] = filterModelObj.filterData(searchedText: searchedCity!, data: cities)
+        let filteredCities: [CityViewModel] = filterModelObj.filterData(searchedText: searchedCity!, data: cityNodeModelObj)!
         XCTAssertFalse(filteredCities.isEmpty)
     }
     
-    func testFilteredListWithEmptyString() {
-        let filteredCities: [City] = filterModelObj.filterData(searchedText: "", data: cities)
-        XCTAssertTrue(filteredCities.count == cities.count)
-
+    func testFilterWithEmptyString() {
+        testCreateCityNodeData()
+        let filteredCities: [CityViewModel]? = filterModelObj.filterData(searchedText: "", data: cityNodeModelObj) ?? [CityViewModel]()
+        XCTAssertTrue(filteredCities!.isEmpty)
     }
 }

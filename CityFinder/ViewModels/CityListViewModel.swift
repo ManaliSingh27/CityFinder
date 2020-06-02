@@ -23,7 +23,7 @@ class CityListViewModel: NSObject {
     private var filterCitiesObj = FilterCityViewModel()
     private var filterManager: FilterDataViewModel!
     let cityNodeViewModelObj = CityNodeViewModel()
-
+    
     private var cities: [City] {
         didSet {
             self.delegate?.parseCitiesSuccess()
@@ -35,7 +35,7 @@ class CityListViewModel: NSObject {
             self.filteredCityDelegate?.citiesFilteredSuccess()
         }
     }
-   
+    
     weak var delegate: CityListViewModelDelegate?
     weak var filteredCityDelegate: FilteredCityViewModelDelegate?
     
@@ -45,13 +45,13 @@ class CityListViewModel: NSObject {
         self.delegate = delegate
         self.filteredCityDelegate = filteredCityDelegate
         self.filterManager = FilterDataViewModel(filter: filterCitiesObj)
-
+        
     }
     
-/// Parse the json file and saves the city list in cities array
-   func getCitiesList() {
+    /// Parse the json file and saves the city list in cities array
+    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
-         parserManager.parseJson(resourceFile: "cities", completion: {[weak self] (result) in
+        parserManager.parseJson(resourceFile: "cities", completion: {[weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let cityResponse):
@@ -67,13 +67,12 @@ class CityListViewModel: NSObject {
     
     func saveCitiesDataInTrieFormat() {
         let dispatchQueue = DispatchQueue(label: "SaveDataQueue", qos: .background)
-               dispatchQueue.async {[weak self] in
-                   guard let self = self else { return }
-                   for city in self.cities {
-                    
-                    self.cityNodeViewModelObj.append(word: city.cityCountryCode, viewModel: CityViewModel(city: city))
-                   }
-                
+        dispatchQueue.async {[weak self] in
+            guard let self = self else { return }
+            for city in self.cities {
+                self.cityNodeViewModelObj.append(viewModel: CityViewModel(city: city))
+            }
+            
         }
         
     }
