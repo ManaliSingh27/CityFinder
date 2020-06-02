@@ -22,7 +22,7 @@ class CityListViewModel: NSObject {
     private var parserObj  = CityParserViewModel()
     private var filterCitiesObj = FilterCityViewModel()
     private var filterManager: FilterDataViewModel!
-    let trie = Trie()
+    let cityNodeViewModelObj = CityNodeViewModel()
 
     private var cities: [City] {
         didSet {
@@ -51,9 +51,8 @@ class CityListViewModel: NSObject {
 /// Parse the json file and saves the city list in cities array
    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
-         parserManager.parseJson(resourceFile: "cities", completion: {(result) in
-          //  guard let self = self else { return }
-
+         parserManager.parseJson(resourceFile: "cities", completion: {[weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let cityResponse):
                 let cityArray = cityResponse as? [City]
@@ -67,9 +66,16 @@ class CityListViewModel: NSObject {
     }
     
     func saveCitiesDataInTrieFormat() {
-        for city in self.cities {
-            trie.append(word: city.cityCountryCode, viewModel: CityViewModel(city: city))
+        let dispatchQueue = DispatchQueue(label: "SaveDataQueue", qos: .background)
+               dispatchQueue.async {[weak self] in
+                   guard let self = self else { return }
+                   for city in self.cities {
+                    
+                    self.cityNodeViewModelObj.append(word: city.cityCountryCode, viewModel: CityViewModel(city: city))
+                   }
+                
         }
+        
     }
     
     /// Returns the number of cities based on the search text entered.
@@ -91,6 +97,6 @@ class CityListViewModel: NSObject {
     /// - parameter searchedText: Text entered in search bar
     func filterCities(searchedText: String) {
         self.filteredCities =
-            self.filterManager.filterData(searchedText: searchedText, data: trie) ?? [CityViewModel]()
+            self.filterManager.filterData(searchedText: searchedText, data: self.cityNodeViewModelObj) ?? [CityViewModel]()
     }
 }

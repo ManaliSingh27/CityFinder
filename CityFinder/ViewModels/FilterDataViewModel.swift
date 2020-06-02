@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FilterData {
-    func filterData(searchedText: String, data: Trie) -> [CityViewModel]?
+    func filterData(searchedText: String, data: CityNodeViewModel) -> [CityViewModel]?
 }
 
 class FilterDataViewModel {
@@ -19,7 +19,7 @@ class FilterDataViewModel {
         self.filterDataObj = filter
     }
     
-    func filterData(searchedText: String, data: Trie) -> [CityViewModel]? {
+    func filterData(searchedText: String, data: CityNodeViewModel) -> [CityViewModel]? {
         return (filterDataObj.filterData(searchedText: searchedText, data: data))
     }
 }
@@ -29,8 +29,8 @@ final class FilterCityViewModel: FilterData {
     /// - parameter searchedText: Text to be matched in the data
     /// - parameter data: Array of cities
     /// - returns:  Array of Filtered Cities
-    func filterData(searchedText: String, data: Trie) -> [CityViewModel]? {
-        let filteredCityModel: [CityViewModel]? = data.find(searchedText)
+    func filterData(searchedText: String, data: CityNodeViewModel) -> [CityViewModel]? {
+        let filteredCityModel: [CityViewModel]? = data.find(keyword: searchedText)
         return filteredCityModel
     }
 }
