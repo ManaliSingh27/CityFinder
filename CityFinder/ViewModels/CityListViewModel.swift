@@ -56,8 +56,8 @@ class CityListViewModel: NSObject {
             switch result {
             case .success(let cityResponse):
                 let cityArray = cityResponse as? [City]
-                self.cities = cityArray!
-                self.saveCitiesDataInTrieFormat()
+              //  self.cities = cityArray!
+                self.saveCitiesDataInTrieFormat(cities: cityArray!)
             case .error(let error):
                 print(error)
                 self.delegate?.parseCitiesFailureWithMessage(message: error)
@@ -65,12 +65,20 @@ class CityListViewModel: NSObject {
         })
     }
     
-    func saveCitiesDataInTrieFormat() {
+    /// Saves the parsed City in Trie data structure
+    /// - parameter cities: List of cities
+    func saveCitiesDataInTrieFormat(cities: [City]) {
         let dispatchQueue = DispatchQueue(label: "SaveDataQueue", qos: .background)
         dispatchQueue.async {[weak self] in
             guard let self = self else { return }
-            for city in self.cities {
+            var cityCount: Int = 0
+            for city in cities {
                 self.cityNodeViewModelObj.append(viewModel: CityViewModel(city: city))
+                cityCount += 1
+                if cityCount == cities.count {
+                    // Show the cities list on view after all the cities are saved in City Trie to enable fast search
+                    self.cities = cities
+                }
             }
         }
     }

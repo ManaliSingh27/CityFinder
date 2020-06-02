@@ -23,6 +23,7 @@
 		DF2FD2332480314600304565 /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2322480314600304565 /* CityListViewModel.swift */; };
 		DF2FD2352480639100304565 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2342480639100304565 /* CityViewModel.swift */; };
 		DF2FD23724806D8100304565 /* CityListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD23624806D8100304565 /* CityListTableViewTests.swift */; };
+		DF7F641C2487080A00B39EF8 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7F641B2487080A00B39EF8 /* test.json */; };
 		DF94790224814135005EA854 /* ParserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790124814135005EA854 /* ParserViewModel.swift */; };
 		DF947906248160BB005EA854 /* FilterDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF947905248160BB005EA854 /* FilterDataViewModel.swift */; };
 		DF94790824819E31005EA854 /* FilterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790724819E31005EA854 /* FilterViewModelTests.swift */; };
@@ -77,6 +78,7 @@
 		DF2FD2322480314600304565 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		DF2FD2342480639100304565 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		DF2FD23624806D8100304565 /* CityListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewTests.swift; sourceTree = "<group>"; };
+		DF7F641B2487080A00B39EF8 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		DF94790124814135005EA854 /* ParserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserViewModel.swift; sourceTree = "<group>"; };
 		DF947905248160BB005EA854 /* FilterDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataViewModel.swift; sourceTree = "<group>"; };
 		DF94790724819E31005EA854 /* FilterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModelTests.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2FD220248013C500304565 /* cities.json */,
+				DF7F641B2487080A00B39EF8 /* test.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				DF2FD1FC2480120200304565 /* LaunchScreen.storyboard in Resources */,
 				DF2FD1F92480120200304565 /* Assets.xcassets in Resources */,
 				DF2FD1F72480120100304565 /* Main.storyboard in Resources */,
+				DF7F641C2487080A00B39EF8 /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +611,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6N6AJ67269;
 				INFOPLIST_FILE = CityFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,6 +621,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.manali.CityFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -624,7 +631,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6N6AJ67269;
 				INFOPLIST_FILE = CityFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -632,6 +641,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.manali.CityFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

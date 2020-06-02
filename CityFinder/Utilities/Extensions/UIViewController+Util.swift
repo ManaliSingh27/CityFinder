@@ -29,7 +29,10 @@ extension UIViewController {
     /// - parameter activityIndicator: activity indicator instance
     func showActivityIndicatory(activityIndicator: UIActivityIndicatorView) {
         self.view.addSubview(activityIndicator)
-        activityIndicator.center = self.view.center
+        activityIndicator.center =  CGPoint(x: UIScreen.main.bounds.size.width/2.0, y: UIScreen.main.bounds.size.height/2.0)
+        activityIndicator.autoresizingMask = (UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.RawValue(UInt8(UIView.AutoresizingMask.flexibleRightMargin.rawValue) | UInt8(UIView.AutoresizingMask.flexibleLeftMargin.rawValue) | UInt8(UIView.AutoresizingMask.flexibleBottomMargin.rawValue) | UInt8(UIView.AutoresizingMask.flexibleTopMargin.rawValue))))
+
+      //  activityIndicator.center = self.view.center
         activityIndicator.frame = view.bounds
         activityIndicator.color = Constants.kBlueColor
         activityIndicator.bringSubviewToFront(self.view)
