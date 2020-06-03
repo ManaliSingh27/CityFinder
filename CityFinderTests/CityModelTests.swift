@@ -21,7 +21,7 @@ class CityModelTests: XCTestCase {
     
     func testCityJsonResponse() throws {
         guard
-            let path = Bundle.main.path(forResource: "cities", ofType: "json")
+            let path = Bundle.main.path(forResource: Constants.kCitiesJSON, ofType: "json")
             else {
                 XCTFail("Missing file: cities.json")
                 return

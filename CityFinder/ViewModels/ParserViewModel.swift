@@ -47,7 +47,7 @@ final class CityParserViewModel: ParseData {
             let sortedResponse = response.sorted { $0.cityName < $1.cityName }
             completion(.success(sortedResponse))
         } catch {
-            completion(.error("Parsing Failed"))
+            completion(.error(ErrorConstants.kParsingFailedError))
         }
       
     }

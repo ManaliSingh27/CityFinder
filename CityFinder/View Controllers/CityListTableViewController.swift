@@ -38,7 +38,7 @@ class CityListTableViewController: UITableViewController {
     
     /// Gets the Cities list from CityListViewModel
     private func showCitiesList() {
-        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let dispatchQueue = DispatchQueue(label: "GetCitiesQueue", qos: .background)
         dispatchQueue.async {[weak self] in
             guard let self = self else { return }
             self.cityListViewModel.getCitiesList()
@@ -59,7 +59,7 @@ class CityListTableViewController: UITableViewController {
     private func setUpSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Find a City"
+        searchController.searchBar.placeholder = Constants.kSearchPlaceholderString
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
@@ -96,7 +96,7 @@ extension CityListTableViewController {
     // MARK: - Table view delegates
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCityViewModel = self.cityListViewModel.cityAtIndex(isFiltering: isFiltering, index: indexPath.row)
-        performSegue(withIdentifier: "showDetailedCitySegue", sender: nil)
+        performSegue(withIdentifier: StoryboardConstants.kCityDetailedSegue, sender: nil)
     }
 }
 
@@ -109,13 +109,15 @@ extension CityListTableViewController: CityListViewModelDelegate {
             self.tableView.reloadData()
             self.removeActivityIndicator(activityIndicator: self.activityIndicator)
             let searchBar = self.searchController.searchBar
+            if self.isFiltering {
             self.cityListViewModel.filterCities(searchedText: searchBar.text!)
+            }
         }
     }
     
     /// Shows Alert if the parsing failed
     func parseCitiesFailureWithMessage(message: String) {
-        self.showAlert(title: "Error", message: message)
+        self.showAlert(title: ErrorConstants.kError, message: message)
     }
 }
 

@@ -33,7 +33,7 @@ class CityDetailedViewTests: XCTestCase {
     
     func createSelectedCityModelTestData() {
         let city =  City(
-            cityName: "Alabama", countryCode: "US", cityId: 1, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Alabama, US"
+            cityName: "Alabama", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
         )
         let cityViewModel  = CityViewModel(city: city)
         viewControllerUnderTest.selectedCityViewModel = cityViewModel

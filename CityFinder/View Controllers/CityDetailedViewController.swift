@@ -22,6 +22,9 @@ class CityDetailedViewController: UIViewController {
        
     }
     
+    deinit {
+        cityMapView.removeAnnotations(cityMapView.annotations) 
+    }
     /*
      // MARK: - Navigation
      

@@ -22,43 +22,65 @@ class CityListViewModel: NSObject {
     private var parserObj  = CityParserViewModel()
     private var filterCitiesObj = FilterCityViewModel()
     private var filterManager: FilterDataViewModel!
+    let cityNodeViewModelObj = CityNodeViewModel()
+    
     private var cities: [City] {
         didSet {
             self.delegate?.parseCitiesSuccess()
         }
     }
     
-    private var filteredCities: [City] {
+    private var filteredCities: [CityViewModel] {
         didSet {
             self.filteredCityDelegate?.citiesFilteredSuccess()
         }
     }
-   
+    
     weak var delegate: CityListViewModelDelegate?
     weak var filteredCityDelegate: FilteredCityViewModelDelegate?
     
     init(delegate: CityListViewModelDelegate?, filteredCityDelegate: FilteredCityViewModelDelegate?) {
         self.cities = [City]()
-        self.filteredCities = [City]()
+        self.filteredCities = [CityViewModel]()
         self.delegate = delegate
         self.filteredCityDelegate = filteredCityDelegate
         self.filterManager = FilterDataViewModel(filter: filterCitiesObj)
-
+        
     }
     
-/// Parse the json file and saves the city list in cities array
-   func getCitiesList() {
+    /// Parse the json file and saves the city list in cities array
+    func getCitiesList() {
         let parserManager = ParserViewModel(dataParser: parserObj)
-         parserManager.parseJson(resourceFile: "cities", completion: {(result) in
+        parserManager.parseJson(resourceFile: Constants.kCitiesJSON, completion: {[weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let cityResponse):
                 let cityArray = cityResponse as? [City]
-                self.cities = cityArray!
+              //  self.cities = cityArray!
+                self.saveCitiesDataInTrieFormat(cities: cityArray!)
             case .error(let error):
                 print(error)
                 self.delegate?.parseCitiesFailureWithMessage(message: error)
             }
         })
+    }
+    
+    /// Saves the parsed City in Trie data structure
+    /// - parameter cities: List of cities
+    func saveCitiesDataInTrieFormat(cities: [City]) {
+        let dispatchQueue = DispatchQueue(label: "SaveDataQueue", qos: .background)
+        dispatchQueue.async {[weak self] in
+            guard let self = self else { return }
+            var cityCount: Int = 0
+            for city in cities {
+                self.cityNodeViewModelObj.append(viewModel: CityViewModel(city: city))
+                cityCount += 1
+                if cityCount == cities.count {
+                    // Show the cities list on view after all the cities are saved in City Trie to enable fast search
+                    self.cities = cities
+                }
+            }
+        }
     }
     
     /// Returns the number of cities based on the search text entered.
@@ -73,12 +95,13 @@ class CityListViewModel: NSObject {
     /// - parameter index: Index of the row to get the City View Model
     /// - returns:  City View Model
     func cityAtIndex(isFiltering: Bool, index: Int) -> CityViewModel {
-        return isFiltering ? CityViewModel(city: self.filteredCities[index]) : CityViewModel(city: self.cities[index])
+        return isFiltering ? self.filteredCities[index] : CityViewModel(city: self.cities[index])
     }
     
     /// Updates the filteredCities array based on the searched text
     /// - parameter searchedText: Text entered in search bar
     func filterCities(searchedText: String) {
-        self.filteredCities = self.filterManager.filterData(searchedText: searchedText, data: self.cities) 
+        self.filteredCities =
+            self.filterManager.filterData(searchedText: searchedText, data: self.cityNodeViewModelObj) ?? [CityViewModel]()
     }
 }

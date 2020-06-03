@@ -22,10 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureNavigationBar() {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.white
-        navigationBarAppearace.barTintColor = Constants.blueColor
+        navigationBarAppearace.barTintColor = Constants.kBlueColor
         let attrs = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: Constants.HelveticaBold22Font
+            NSAttributedString.Key.font: Constants.kHelveticaBold22Font
         ]
         navigationBarAppearace.titleTextAttributes = attrs
     }
