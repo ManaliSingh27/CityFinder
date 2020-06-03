@@ -23,6 +23,7 @@ class CityListViewModel: NSObject {
     private var filterCitiesObj = FilterCityViewModel()
     private var filterManager: FilterDataViewModel!
     let cityNodeViewModelObj = CityNodeViewModel()
+    let saveDataObj = SaveDataFlowInTrie()
     
     private var cities: [City] {
         didSet {
@@ -68,19 +69,9 @@ class CityListViewModel: NSObject {
     /// Saves the parsed City in Trie data structure
     /// - parameter cities: List of cities
     func saveCitiesDataInTrieFormat(cities: [City]) {
-        let dispatchQueue = DispatchQueue(label: "SaveDataQueue", qos: .background)
-        dispatchQueue.async {[weak self] in
-            guard let self = self else { return }
-            var cityCount: Int = 0
-            for city in cities {
-                self.cityNodeViewModelObj.append(viewModel: CityViewModel(city: city))
-                cityCount += 1
-                if cityCount == cities.count {
-                    // Show the cities list on view after all the cities are saved in City Trie to enable fast search
-                    self.cities = cities
-                }
-            }
-        }
+        saveDataObj.saveCitiesDataInTrieFormat(cities: cities, trieNode: self.cityNodeViewModelObj, completion: {
+            self.cities = cities
+        })
     }
     
     /// Returns the number of cities based on the search text entered.
