@@ -39,7 +39,9 @@ class CityNodeViewModel {
         //final end of word check
         if word.count == currentNode.level {
             currentNode.isFinal = true
-            currentNode.cityModel = viewModel
+            var arr: [CityViewModel]? = currentNode.cityModels ?? [CityViewModel]()
+            arr?.append(viewModel)
+            currentNode.cityModels = arr
             return
         }
     } //end function
@@ -71,7 +73,9 @@ class CityNodeViewModel {
         } //end while
         //retrieve the keyword and any descendants
         if (currentNode.key?.lowercased() == keyword.lowercased()) && (currentNode.isFinal) {
-            searchedViewModelList.append(currentNode.cityModel!)
+            for cityModel in currentNode.cityModels! {
+                searchedViewModelList.append(cityModel)
+            }
         }
         var tempChildArray = [CityNode]()
         for child in currentNode.children {
@@ -81,7 +85,9 @@ class CityNodeViewModel {
             //include only children that are words
             for child in currentNode.children {
                 if child.isFinal == true {
-                    searchedViewModelList.append(child.cityModel!)
+                    for cityModel in child.cityModels! {
+                        searchedViewModelList.append(cityModel)
+                    }
                 }
                 if !child.children.isEmpty {
                     for child1 in child.children {

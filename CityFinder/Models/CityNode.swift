@@ -12,7 +12,7 @@ public class CityNode {
     var children: [CityNode]
     var isFinal: Bool
     var level: Int
-    var cityModel: CityViewModel?
+    var cityModels: [CityViewModel]?
     
     init() {
         self.children = [CityNode]()

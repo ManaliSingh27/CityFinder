@@ -26,11 +26,3 @@ extension Coordinate: Decodable {
         longitude = try values.decode(Double.self, forKey: .longitude)
     }
 }
-
-extension Coordinate: Encodable {
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(latitude, forKey: .latitude)
-        try container.encode(longitude, forKey: .longitude)
-    }
-}

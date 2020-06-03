@@ -28,31 +28,37 @@ class FilterViewModelTests: XCTestCase {
     private func createCityModelData() -> [City] {
         let cities = [
             City(
-                cityName: "Alabama", countryCode: "US", cityId: 1, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Alabama, US"
+                cityName: "Alabama", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Albuquerque", countryCode: "US", cityId: 2, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Albuquerque, US"
+                cityName: "Alabama", countryCode: "US", location: Coordinate(latitude: 11.90, longitude: 19.90)
             ),
             City(
-                cityName: "Anaheim", countryCode: "US", cityId: 3, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Anaheim, US"
+                cityName: "Alabama", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Arizona", countryCode: "US", cityId: 4, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Arizona, US"
+                cityName: "Albuquerque", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Sydney", countryCode: "AU", cityId: 5, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Sydney, AU"
+                cityName: "Anaheim", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Amsterdam", countryCode: "NL", cityId: 6, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsterdam, NL"
+                cityName: "Arizona", countryCode: "US", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Amsterdam-Zuidoost", countryCode: "NL", cityId: 7, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsterdam-Zuidoost, NL"
+                cityName: "Sydney", countryCode: "AU", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-                cityName: "Amsham", countryCode: "DE", cityId: 8, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Amsham, DE"
+                cityName: "Amsterdam", countryCode: "NL", location: Coordinate(latitude: 10.90, longitude: 18.90)
             ),
             City(
-            cityName: "Mumbai", countryCode: "IN", cityId: 9, location: Coordinate(latitude: 10.90, longitude: 18.90), cityCountryCode: "Mumbai, IN"
+                cityName: "Amsterdam-Zuidoost", countryCode: "NL", location: Coordinate(latitude: 10.90, longitude: 18.90)
+            ),
+            City(
+                cityName: "Amsham", countryCode: "DE", location: Coordinate(latitude: 10.90, longitude: 18.90)
+            ),
+            City(
+            cityName: "Mumbai", countryCode: "IN", location: Coordinate(latitude: 10.90, longitude: 18.90)
                   )
         ]
         return cities
@@ -109,6 +115,12 @@ class FilterViewModelTests: XCTestCase {
         XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Albuquerque"})
         XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Anaheim"})
         XCTAssertFalse(filteredCityViewModels.contains {$0.cityName == "Arizona"})
+    }
+    
+    func testFilterWithDuplicateCity() {
+        testCreateCityNodeData()
+        let filteredCityViewModels: [CityViewModel] = filterModelObj.filterData(searchedText: "Alabama", data: cityNodeModelObj)!
+        XCTAssertTrue(filteredCityViewModels.count == 3)
     }
     
     func testFilterWithInvalidInput() {
