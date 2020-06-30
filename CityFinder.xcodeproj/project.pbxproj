@@ -33,6 +33,7 @@
 		DF9705F5248671E7003810D1 /* CityNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9705F4248671E7003810D1 /* CityNodeViewModel.swift */; };
 		DF9705F72486723D003810D1 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9705F62486723D003810D1 /* String+Util.swift */; };
 		DFAA8BB3248839CF001B7682 /* SaveDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAA8BB2248839CF001B7682 /* SaveDataFlow.swift */; };
+		DFD0BB1024ABECF900D5F6CF /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0BB0F24ABECF900D5F6CF /* TestConstants.swift */; };
 		DFD8D1D124840E5800B82B4A /* CityDetailedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */; };
 		DFD8D1D324844A2300B82B4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8D1D224844A2300B82B4A /* Constants.swift */; };
 		DFFEC9B72483CFF200D5FFBC /* CityDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */; };
@@ -89,8 +90,13 @@
 		DF9705F4248671E7003810D1 /* CityNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityNodeViewModel.swift; sourceTree = "<group>"; };
 		DF9705F62486723D003810D1 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
 		DFAA8BB2248839CF001B7682 /* SaveDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataFlow.swift; sourceTree = "<group>"; };
+		DFD0BB0F24ABECF900D5F6CF /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		DFD8D1D024840E5800B82B4A /* CityDetailedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewTests.swift; sourceTree = "<group>"; };
 		DFD8D1D224844A2300B82B4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DFF35C1424A3DFDA0067296F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		DFF35C1524A3DFDA0067296F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DFF35C1724A3E0170067296F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DFF35C1924A3E01A0067296F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DFFEC9B62483CFF200D5FFBC /* CityDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailedViewController.swift; sourceTree = "<group>"; };
 		DFFEC9B82483DBC700D5FFBC /* MKMapView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +129,7 @@
 		DF2FD1E32480120100304565 = {
 			isa = PBXGroup;
 			children = (
+				DFD0BB0F24ABECF900D5F6CF /* TestConstants.swift */,
 				DF94790C2481B8D2005EA854 /* .swiftlint.yml */,
 				DF2FD1EE2480120100304565 /* CityFinder */,
 				DF2FD2052480120200304565 /* CityFinderTests */,
@@ -353,6 +360,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = DF2FD1E32480120100304565;
 			productRefGroup = DF2FD1ED2480120100304565 /* Products */;
@@ -421,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFD0BB1024ABECF900D5F6CF /* TestConstants.swift in Sources */,
 				DF2FD23024802C8B00304565 /* CityTableViewCell.swift in Sources */,
 				DF2FD2332480314600304565 /* CityListViewModel.swift in Sources */,
 				DF2FD1F02480120100304565 /* AppDelegate.swift in Sources */,
@@ -482,6 +491,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				DF2FD1F62480120100304565 /* Base */,
+				DFF35C1424A3DFDA0067296F /* fr */,
+				DFF35C1724A3E0170067296F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -490,6 +501,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				DF2FD1FB2480120200304565 /* Base */,
+				DFF35C1524A3DFDA0067296F /* fr */,
+				DFF35C1924A3E01A0067296F /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -501,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -561,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
