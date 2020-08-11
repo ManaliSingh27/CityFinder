@@ -38,4 +38,4 @@ mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp "./scripts/provisioning-profile/development-provisioning-profile.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
 cp "./scripts/provisioning-profile/distribution-provisioning-profile.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
 
-xcodebuild archive -workspace ManaliSingh27/CityFinder.xcworkspace -scheme CityFinder Release -derivedDataPath ./build -archivePath ./build/Products/CityFinder.xcarchive
+xcodebuild archive -project ManaliSingh27/CityFinder.xcodeproj -scheme CityFinder Release -derivedDataPath ./build -archivePath ./build/Products/CityFinder.xcarchive
