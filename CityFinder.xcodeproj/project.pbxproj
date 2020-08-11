@@ -23,6 +23,13 @@
 		DF2FD2332480314600304565 /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2322480314600304565 /* CityListViewModel.swift */; };
 		DF2FD2352480639100304565 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD2342480639100304565 /* CityViewModel.swift */; };
 		DF2FD23724806D8100304565 /* CityListTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FD23624806D8100304565 /* CityListTableViewTests.swift */; };
+		DF43CC4B24E2CF4A00054749 /* distribution-key.p12.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC4724E2CF4900054749 /* distribution-key.p12.enc */; };
+		DF43CC4C24E2CF4A00054749 /* development-key.p12.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC4824E2CF4900054749 /* development-key.p12.enc */; };
+		DF43CC4D24E2CF4A00054749 /* development-cert.cer.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC4924E2CF4900054749 /* development-cert.cer.enc */; };
+		DF43CC4E24E2CF4A00054749 /* distribution-cert.cer.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC4A24E2CF4A00054749 /* distribution-cert.cer.enc */; };
+		DF43CC5124E2CF5B00054749 /* development-provisioning-profile.mobileprovision.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC4F24E2CF5B00054749 /* development-provisioning-profile.mobileprovision.enc */; };
+		DF43CC5224E2CF5B00054749 /* distribution-provisioning-profile.mobileprovision.enc in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC5024E2CF5B00054749 /* distribution-provisioning-profile.mobileprovision.enc */; };
+		DF43CC5424E2CF7600054749 /* AppleWWDRCA.cer in Resources */ = {isa = PBXBuildFile; fileRef = DF43CC5324E2CF7600054749 /* AppleWWDRCA.cer */; };
 		DF7F641C2487080A00B39EF8 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = DF7F641B2487080A00B39EF8 /* test.json */; };
 		DF94790224814135005EA854 /* ParserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94790124814135005EA854 /* ParserViewModel.swift */; };
 		DF947906248160BB005EA854 /* FilterDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF947905248160BB005EA854 /* FilterDataViewModel.swift */; };
@@ -80,6 +87,14 @@
 		DF2FD2322480314600304565 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		DF2FD2342480639100304565 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		DF2FD23624806D8100304565 /* CityListTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewTests.swift; sourceTree = "<group>"; };
+		DF43CC3524E2C69900054749 /* ci-script.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ci-script.bash"; sourceTree = "<group>"; };
+		DF43CC4724E2CF4900054749 /* distribution-key.p12.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "distribution-key.p12.enc"; sourceTree = "<group>"; };
+		DF43CC4824E2CF4900054749 /* development-key.p12.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "development-key.p12.enc"; sourceTree = "<group>"; };
+		DF43CC4924E2CF4900054749 /* development-cert.cer.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "development-cert.cer.enc"; sourceTree = "<group>"; };
+		DF43CC4A24E2CF4A00054749 /* distribution-cert.cer.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "distribution-cert.cer.enc"; sourceTree = "<group>"; };
+		DF43CC4F24E2CF5B00054749 /* development-provisioning-profile.mobileprovision.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "development-provisioning-profile.mobileprovision.enc"; sourceTree = "<group>"; };
+		DF43CC5024E2CF5B00054749 /* distribution-provisioning-profile.mobileprovision.enc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "distribution-provisioning-profile.mobileprovision.enc"; sourceTree = "<group>"; };
+		DF43CC5324E2CF7600054749 /* AppleWWDRCA.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleWWDRCA.cer; sourceTree = "<group>"; };
 		DF7F641B2487080A00B39EF8 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		DF94790124814135005EA854 /* ParserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserViewModel.swift; sourceTree = "<group>"; };
 		DF947905248160BB005EA854 /* FilterDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +144,7 @@
 		DF2FD1E32480120100304565 = {
 			isa = PBXGroup;
 			children = (
+				DF43CC3424E2C67300054749 /* scripts */,
 				DFD0BB0F24ABECF900D5F6CF /* TestConstants.swift */,
 				DF94790C2481B8D2005EA854 /* .swiftlint.yml */,
 				DF2FD1EE2480120100304565 /* CityFinder */,
@@ -253,6 +269,37 @@
 				DFD8D1D224844A2300B82B4A /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		DF43CC3424E2C67300054749 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				DF43CC4624E2CF2C00054749 /* certs */,
+				DF43CC4024E2CEC800054749 /* provisioning-profile */,
+				DF43CC3524E2C69900054749 /* ci-script.bash */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		DF43CC4024E2CEC800054749 /* provisioning-profile */ = {
+			isa = PBXGroup;
+			children = (
+				DF43CC4F24E2CF5B00054749 /* development-provisioning-profile.mobileprovision.enc */,
+				DF43CC5024E2CF5B00054749 /* distribution-provisioning-profile.mobileprovision.enc */,
+			);
+			path = "provisioning-profile";
+			sourceTree = "<group>";
+		};
+		DF43CC4624E2CF2C00054749 /* certs */ = {
+			isa = PBXGroup;
+			children = (
+				DF43CC5324E2CF7600054749 /* AppleWWDRCA.cer */,
+				DF43CC4924E2CF4900054749 /* development-cert.cer.enc */,
+				DF43CC4824E2CF4900054749 /* development-key.p12.enc */,
+				DF43CC4A24E2CF4A00054749 /* distribution-cert.cer.enc */,
+				DF43CC4724E2CF4900054749 /* distribution-key.p12.enc */,
+			);
+			path = certs;
 			sourceTree = "<group>";
 		};
 		DF94790E2481C7FD005EA854 /* Utilities */ = {
@@ -381,9 +428,16 @@
 			files = (
 				DF94790D2481B8D2005EA854 /* .swiftlint.yml in Resources */,
 				DF2FD221248013C500304565 /* cities.json in Resources */,
+				DF43CC5124E2CF5B00054749 /* development-provisioning-profile.mobileprovision.enc in Resources */,
+				DF43CC4E24E2CF4A00054749 /* distribution-cert.cer.enc in Resources */,
 				DF2FD1FC2480120200304565 /* LaunchScreen.storyboard in Resources */,
+				DF43CC4B24E2CF4A00054749 /* distribution-key.p12.enc in Resources */,
 				DF2FD1F92480120200304565 /* Assets.xcassets in Resources */,
+				DF43CC4D24E2CF4A00054749 /* development-cert.cer.enc in Resources */,
+				DF43CC4C24E2CF4A00054749 /* development-key.p12.enc in Resources */,
+				DF43CC5424E2CF7600054749 /* AppleWWDRCA.cer in Resources */,
 				DF2FD1F72480120100304565 /* Main.storyboard in Resources */,
+				DF43CC5224E2CF5B00054749 /* distribution-provisioning-profile.mobileprovision.enc in Resources */,
 				DF7F641C2487080A00B39EF8 /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
