@@ -23,4 +23,6 @@ struct ErrorConstants {
 
 struct StoryboardConstants {
     static let kCityDetailedSegue: String = "showDetailedCitySegue"
+    
+    
 }

@@ -44,4 +44,8 @@ class CityModelTests: XCTestCase {
         XCTAssert((firstCity?.location.longitude as Any) is Double)
 
     }
+    
+    func testNumberEqual() {
+        XCTAssert("test" == "test")
+    }
 }
